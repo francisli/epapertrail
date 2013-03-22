@@ -10,7 +10,7 @@ gem 'pg'
 gem 'haml'
 gem 'haml-rails', :group => :development
 gem 'newrelic_rpm'
-
+gem 'geoip-c'
 
 # Gems used only for assets and not required
 # in production environments by default.
