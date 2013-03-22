@@ -1,0 +1,43 @@
+.navbar-inner {
+  background: white;
+}
+
+a.brand {
+  background: transparent image-url('logo.gif') no-repeat center center;
+  width: 277px;
+  height: 64px;
+  span {
+    position: relative;
+    left: -100000px;
+  }
+}
+
+body {
+  background: #f0f0f0;
+  padding-top: 84px;
+  color: #999;
+}
+
+footer {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 12px;
+}
+
+a {
+  color:#366480;  
+}
+
+.content-bg {
+	background: white;
+	width: 1020px;
+	margin: 0 auto;
+	padding: 20px 0;
+	@include box-shadow(0 0 3px #e1e1e3);
+	border-bottom: 1px solid white;
+}
+
+.well {
+  background: white;
+	@include box-shadow(0 0 3px #e1e1e3);
+}

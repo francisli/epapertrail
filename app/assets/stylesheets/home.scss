@@ -1,0 +1,51 @@
+body.home.index {
+  .well {
+    padding: 6px;
+    @include border-radius(6px);
+    h2 {
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 60px;
+      color: white;
+      margin: 0;
+      text-align: center;
+      @include border-radius(4px);
+    }
+    h3 {
+      font-family: $serifFontFamily;
+      font-size: 18px;
+      font-weight: normal;
+      text-align: center;
+    }
+    p {
+      font-family: $serifFontFamily;
+      font-style: italic;
+      text-align: center;
+      margin: 0 8px;
+    }
+    &.bills_and_resolutions {
+      h2 {
+        background: $green image-url('green-header.gif') no-repeat;
+      }
+      h3 {
+        color: $green;
+      }
+    }
+    &.from_the_floor {
+      h2 {
+        background: $purple image-url('purple-header.gif') no-repeat;
+      }
+      h3 {
+        color: $purple;
+      }
+    }
+    &.head_to_head {
+      h2 {
+        background: $brown image-url('brown-header.gif') no-repeat;
+      }
+      h3 {
+        color: $brown;
+      }
+    }
+  }
+}

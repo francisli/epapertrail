@@ -1,0 +1,64 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title #{"#{yield(:title)} - " if content_for?(:title)}e-PaperTrail
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="#{image_path('favicon.ico')}" rel="shortcut icon")
+    -#
+      %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
+      %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
+      %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
+      %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+      %meta{ :property => 'fb:app_id', :content => ENV['FACEBOOK_APP_ID'] }
+      %meta{ :property => 'og:type', :content => "#{content_for?(:og_type) ? yield(:og_type) : 'website'}" }
+      %meta{ :property => 'og:title', :content => "#{yield(:og_title)}" }
+      %meta{ :property => 'og:description', :content => "#{yield(:og_description)}" }
+      %meta{ :property => 'og:url', :content => "#{content_for?(:og_url) ? yield(:og_url) : url_for(:only_path => false) }" }
+      %meta{ :property => 'og:image', :content => "#{content_for?(:og_image) ? yield(:og_image) : image_url('icon-256.png')}" }    
+    = yield :header
+  %body{ :class => "#{params[:controller].parameterize.dasherize} #{params[:action].parameterize.dasherize}" }
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=#{ENV['FACEBOOK_APP_ID']}";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    - unless @hide_navbar
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            = link_to root_path, :class => 'brand' do
+              %span e-PaperTrail
+      - if flash[:alert]
+        .container
+          .row
+            .span12
+              .alert.alert-error
+                %button{ :type => 'button', :class => 'close', :'data-dismiss' => 'alert' } &times;
+                = flash[:alert]
+      - if flash[:notice]
+        .container
+          .row
+            .span12
+              .alert.alert-success
+                %button{ :type => 'button', :class => 'close', :'data-dismiss' => 'alert' } &times;
+                = flash[:notice]
+    
+    = yield
+    
+    .container
+      %footer
+        = t '.copyright_html'
+
+    = javascript_include_tag "application"
+    = yield :footer

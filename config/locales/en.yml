@@ -2,4 +2,22 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+
+  layouts:
+    
+    application:
+      copyright_html: Copyright &copy; 2009, 2013 by <a href="http://www.francisli.com/">Francis Li</a> and Simona Brusa Pasqu&eacute;
+
+  home:
+    
+    index:
+      bills_and_resolutions: "Bills & Resolutions"
+      from_the_floor: "From the Floor"
+      head_to_head: "Head to Head"
+      latest_legislation: "What's the latest legislation?"
+      saying: "What are they saying?"
+      views: "How different are their views?"
+      track_votes: "Track the votes of your representatives in the Senate and the House."
+      follow_speeches: "Follow what your reps are saying from the floors of the Senate and the House."
+      compare_history: "Compare the voting history of two representatives of your choice."
+      
