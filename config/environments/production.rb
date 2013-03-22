@@ -1,5 +1,7 @@
 Epapertrail::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  
+  config.action_controller.asset_host = "https://#{ENV['AWS_S3_BUCKET']}.s3.amazonaws.com"
 
   # Code is not reloaded between requests
   config.cache_classes = true
