@@ -4,13 +4,13 @@ namespace :geoip do
   desc 'Downloads the latest GeoLite City database from MaxMind and decompress into public folder'
   task :download do
     # download the latest GeoLite City database and decompress
-    print "Downloading latest GeoLiteCity.dat.gz..."
+    print "Downloading latest GeoLiteCity.dat.gz... "
     open("#{Rails.root}/public/GeoLiteCity.dat.gz", 'wb') do |file|
       file << open('http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz').read
     end
-    print "Decompressing GeoLiteCity.dat.gz..."
+    print "decompressing GeoLiteCity.dat.gz... "
     `gunzip #{Rails.root}/public/GeoLiteCity.dat.gz`
-    print "Done preparing GeoLiteCity.dat.gz."
+    puts "done preparing GeoLiteCity.dat.gz."
   end
 end
 

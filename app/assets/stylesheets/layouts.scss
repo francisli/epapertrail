@@ -41,3 +41,47 @@ a {
   background: white;
 	@include box-shadow(0 0 3px #e1e1e3);
 }
+
+.spinner {
+  background:transparent image-url('spinner-green.gif') no-repeat scroll center center;
+  width:inherit;
+  height:200px;
+}
+
+.tabs {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-family: $serifFontFamily;
+  overflow: visible;
+}
+
+.tabs .tab {
+  padding:0 12px 9px;
+}
+
+.tabs .tab > span {
+  border: 1px solid $green;
+  padding: 0 12px;
+  line-height: 16px;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.tabs .tab.selected {
+  background: transparent image-url('down-green.gif') no-repeat bottom center;
+}
+
+.tabs .tab.selected > span {
+  cursor: default;
+}
+
+.tabs .tab.selected > span, .tabs .tab.hover > span {
+  background-color: $green;
+  color: white;
+}
+
+.tabs .separator {
+  border-left: 1px solid #b7b7b7;
+  padding-right: 3px;
+}

@@ -6,6 +6,7 @@
 
 variables
 .DS_Store
+/public/GeoLiteCity.dat
 
 # Ignore bundler config
 /.bundle

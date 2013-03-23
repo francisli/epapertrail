@@ -23,29 +23,41 @@ body.home.index {
       text-align: center;
       margin: 0 8px;
     }
-    &.bills_and_resolutions {
-      h2 {
-        background: $green image-url('green-header.gif') no-repeat;
-      }
-      h3 {
-        color: $green;
-      }
+  }
+  #votes {
+    h2 {
+      background: $green image-url('green-header.gif') no-repeat;
     }
-    &.from_the_floor {
-      h2 {
-        background: $purple image-url('purple-header.gif') no-repeat;
-      }
-      h3 {
-        color: $purple;
-      }
+    h3 {
+      color: $green;
     }
-    &.head_to_head {
-      h2 {
-        background: $brown image-url('brown-header.gif') no-repeat;
-      }
-      h3 {
-        color: $brown;
-      }
+  }
+  #reps {
+    h2 {
+      background: $purple image-url('purple-header.gif') no-repeat;
+    }
+    h3 {
+      color: $purple;
+    }
+    .spinner {
+      background-image: image-url('spinner-purple.gif');
+    }
+    .tabs .tab > span {
+      border-color: $purple;
+    }
+    .tabs .tab.selected {
+      background-image: image-url('down-purple.gif');
+    }
+    .tabs .tab.selected > span, .tabs .tab.hover > span {
+      background-color: $purple;
+    }
+  }
+  #compare {
+    h2 {
+      background: $brown image-url('brown-header.gif') no-repeat;
+    }
+    h3 {
+      color: $brown;
     }
   }
 }

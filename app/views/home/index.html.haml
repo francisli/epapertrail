@@ -1,21 +1,49 @@
+- content_for :footer do
+  :coffee
+    jQuery ->
+      $('#reps-senate-content').load '#{reps_path(:chamber => :senate)}'
+      $('#reps-house-content').load '#{reps_path(:chamber => :house)}'
+    
 .content-bg
   .container
     .row
       .span4
-        .well.bills_and_resolutions
+        #votes.well
           %h2= t '.bills_and_resolutions'
           %h3= t '.latest_legislation'
           %p= t '.track_votes'
+          .tabs
+            %span#votes-senate.tab.selected
+              %span= t 'senate'
+            %span.separator
+            %span#votes-house.tab
+              %span= t 'house'
+          %hr
+          .tabs-content
+            #votes-senate-content
+              .spinner
+            #votes-house-content{ :style => 'display:none;' }
+              .spinner
       .span4
-        .well.from_the_floor
+        #reps.well
           %h2= t '.from_the_floor'
           %h3= t '.saying'
           %p= t '.follow_speeches'
+          .tabs
+            %span#reps-senate.tab.selected
+              %span= t 'senate'
+            %span.separator
+            %span#reps-house.tab
+              %span= t 'house'
+          %hr          
+          .tabs-content
+            #reps-senate-content.tab-content
+              .spinner
+            #reps-house-content.tab-content{ :style => 'display:none;' }
+              .spinner
       .span4
-        .well.head_to_head
+        #compare.well
           %h2= t '.head_to_head'
           %h3= t '.views'
           %p= t '.compare_history'
           
-          
-                    

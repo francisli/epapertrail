@@ -1,6 +1,7 @@
 Epapertrail::Application.routes.draw do
   
   root :to => 'home#index'
+  match 'reps' => 'home#reps', :as => :reps
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
