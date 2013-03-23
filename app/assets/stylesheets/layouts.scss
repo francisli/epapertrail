@@ -28,6 +28,12 @@ a {
   color:#366480;  
 }
 
+hr {
+  border-top: 1px solid #e4f1f1;
+  border-bottom: 1px solid #a6c9c3;
+  margin: 0;
+}
+
 .content-bg {
 	background: white;
 	width: 1020px;
@@ -84,4 +90,228 @@ a {
 .tabs .separator {
   border-left: 1px solid #b7b7b7;
   padding-right: 3px;
+}
+
+.tab-content {
+  overflow: visible;
+}
+
+.party.D {
+  background: transparent image-url('icon-donkey.png') no-repeat;
+  width: 22px;
+  height: 20px;
+}
+
+.party.R {
+  background: transparent image-url('icon-elephant.png') no-repeat;
+  width: 21px;
+  height: 19px;
+}
+
+.party.I {
+  background: transparent image-url('icon-independent.png') no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.party.yourreps {
+  background:transparent url('icon-yourreps.gif') no-repeat;
+  width:27px;
+  height:26px;
+}
+
+.downarrow {
+  background: transparent image-url('down-gray.gif') no-repeat;
+  width: 11px;
+  height: 7px;
+}
+
+.portrait {
+  position:relative;  
+  .frame {
+    @include border-radius(4px);
+  	@include box-shadow(0 0 3px #e1e1e3);
+    width:124px;
+    height:171px;
+    margin: 3px;
+    background-color: white;
+    img {
+      position: absolute;
+      width: 100px;
+      height: 125px;
+      top: 12px;
+      left: 12px;
+    }
+    .name {
+      position: absolute;
+      left: 12px;
+      bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .party {
+      position: absolute;
+      right: 12px;
+      bottom: 7px;
+    }
+  }
+  .downarrow {
+    position: absolute;
+    left: 67px;
+    bottom: -8px;
+    display: none;
+  }  
+  &.selected {
+    .frame {
+      background-color: $gray;
+    }
+    .downarrow {
+      display: block;
+    }
+  }
+}
+
+.vote-summary {
+  .result {
+    background-color: $green;
+    text-align: center;
+    color: white;
+    margin: 10px 0;
+    font-weight: bold;
+
+    .count {
+      font-weight: normal;
+    }
+    .of {
+      font-style: italic;
+      font-family: $serifFontFamily;
+    }
+  }
+  .grid {
+    margin-bottom: 20px;
+    table {
+      td {
+        vertical-align:top;
+        .count {
+          text-align:center;
+          background-color:#f7f7f7;
+          width:94px;
+          font-size: 13px;
+          span {
+            font-size: 10px;
+            text-transform: uppercase;
+          }
+        }
+        .spacer {
+          width:12px;
+          height:12px;
+        }
+        &.party {
+          background-color:#f7f7f7;
+          width:27px;
+          div.party {
+            background-position:center center;
+            width:27px;
+            height:27px;
+          }
+        }
+        &.votes {
+          cursor:crosshair;
+          & > div {
+            width:96px;
+          }
+          .name {
+            float:left;
+            width:84px;
+            height:10px;
+            font-size:11px;
+            line-height:10px;
+            margin: 1px 0 0 12px;
+            white-space:nowrap;
+            overflow:visible;
+            text-transform: uppercase;
+            span {
+              font-family: $serifFontFamily;
+              font-style: italic;
+            }
+          }
+        }
+      }
+    }
+    
+    hr {
+      border-top-color:#f7f7f7;
+      border-bottom-color:#eaeaea;
+      margin:8px 0;
+    }
+
+    .senate.vote {
+      width:10px;
+      height:10px;
+    }
+
+    .house.vote {
+      width:4px;
+      height:4px;
+    }  
+
+    .yourreps .vote {
+      margin:6px 2px 0 0;
+    }
+    
+    .vote {
+      float:left;
+      margin:2px 2px 0 0;
+    }
+
+    .vote span {
+      display:none;
+    }
+
+    .vote.first_row {
+      margin-top:0;
+    }
+
+    .vote.last_col {
+      margin-right:0;
+    }
+
+    .D.vote {
+      background-color:#d5dee6;
+    }
+
+    .R.vote {
+      background-color:#d08478;
+    }
+
+    .I.vote {
+      background-color:#ccc;
+    }
+
+    .D.vote.hover {
+      background-color:#0f528c;
+    }
+
+    .R.vote.hover {
+      background-color:#8c2323;
+    }
+
+    .I.vote.hover {
+      background-color:#777;
+    }
+  }
+  .date {
+    text-transform: uppercase;
+  }
+  .question {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .title {
+    font-size: 18px;
+    line-height: 22px;
+    font-family:'Lucida Sans Demibold Roman',$serifFontFamily;
+    margin-bottom: 10px;
+  }
 }

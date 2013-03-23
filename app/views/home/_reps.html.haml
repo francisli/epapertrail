@@ -1,1 +1,16 @@
-= session[:reps].inspect
+.controls
+  = link_to t('.not_your_reps'), '#'
+.reps
+  - first = true
+  - session[:reps]['results'].each do |rep|
+    - if rep['chamber'] == params[:chamber]
+      .portrait{ :class => "#{first ? 'selected' : ''}" }
+        .frame
+          = link_to rep_path(rep['bioguide_id']) do
+            = image_tag portrait_image_url(rep['bioguide_id'])
+          .name= link_to rep['last_name'], rep_path(rep['bioguide_id'])
+          .party{ :class => rep['party'] }
+        .downarrow
+      - first = false
+  .clearfix
+  

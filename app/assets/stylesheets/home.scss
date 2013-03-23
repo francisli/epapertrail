@@ -23,6 +23,24 @@ body.home.index {
       text-align: center;
       margin: 0 8px;
     }
+    & > hr {
+      margin: 0 8px;
+    }
+    .tab-content {
+      margin: 0 8px;
+      .controls {
+        margin: 4px 0;
+        text-align: center;
+        font-size: 12px;
+      }
+      .portrait {
+        float: left;
+        margin-left: 8px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
   }
   #votes {
     h2 {
@@ -38,6 +56,10 @@ body.home.index {
     }
     h3 {
       color: $purple;
+    }
+    hr {
+      border-top-color:#d6d6e4;
+      border-bottom-color:#666699;
     }
     .spinner {
       background-image: image-url('spinner-purple.gif');
@@ -58,6 +80,10 @@ body.home.index {
     }
     h3 {
       color: $brown;
+    }
+    hr {
+      border-top-color:#ede5e1;
+      border-bottom-color:#c9b0a6;
     }
   }
 }

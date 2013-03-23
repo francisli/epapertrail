@@ -1,0 +1,72 @@
+.vote-summary
+  .result
+    = @vote['result']
+    .count
+      (#{@vote['breakdown']['total']['Yea']+@vote['breakdown']['total']['Nay']}
+      %span.of= t '.of'
+      #{@vote['breakdown']['total']['Yea']+@vote['breakdown']['total']['Nay']+@vote['breakdown']['total']['Not Voting']+@vote['breakdown']['total']['Present']}
+      #{t '.voting'})
+  .grid
+    %table
+      %tr
+        %td{ :colspan => 2}
+        %td
+          .count
+            = @vote['breakdown']['total']['Yea']
+            %span= t '.yeas'
+        %td
+        %td
+          .count
+            = @vote['breakdown']['total']['Nay']
+            %span= t '.nays'
+      - [ 'D', 'R', 'I'].each do |party|
+        %tr
+          %td
+          %td
+            .spacer
+          %td
+          %td
+            .spacer
+          %td
+        %tr
+          %td.party
+            .party{ :class => party }
+          - [ 'Yea', 'Nay' ].each do |vote|
+            %td
+            %td.votes
+              %div
+                - count = 0
+                - row_size = params[:chamber] == 'senate' ? 8 : 16
+                - @vote['voters'].each do |bioguide_id, details|
+                  - if details['voter']['party'] == party and details['vote'] == vote
+                    .vote{ :class => "#{party} #{params[:chamber]}#{count < row_size ? ' first_row' : ''}#{count%row_size==(row_size-1) ? ' last_col' : ''}", :'data-bioguide-id' => bioguide_id }
+                      %span= details['last_name']
+                      %span= vote
+                    - count += 1
+    - if session[:reps]
+      %hr
+      %table
+        %tr
+          %td.party
+            .party.yourreps
+          - [ 'Yea', 'Nay' ].each do |vote|
+            %td
+              .spacer
+            %td.votes.yourreps
+              %div
+                - count = 0
+                - session[:reps]['results'].each do |rep|
+                  - if rep['chamber'] == params[:chamber]
+                    - if @vote['voters'][rep['bioguide_id']] and @vote['voters'][rep['bioguide_id']]['vote'] == vote
+                      .vote{ :class => "#{rep['party']} senate#{count == 0 ? ' first_row' : ''}", :'data-bioguide-id' => rep['bioguide_id'] }
+                        .name{ :class => "#{count == 0 ? 'first_row' : ''}"}= rep['last_name']
+                      .clearfix
+                      - count += 1
+  .date
+    = l Time.parse(@vote['voted_at']), :format => :legislation
+  .question
+    = @vote['question']
+  .title
+    = @vote['bill']['official_title']
+  .link
+    = link_to t('.full_details'), bill_path(@vote['bill']['bill_id'])

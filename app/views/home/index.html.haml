@@ -1,8 +1,10 @@
 - content_for :footer do
   :coffee
     jQuery ->
-      $('#reps-senate-content').load '#{reps_path(:chamber => :senate)}'
-      $('#reps-house-content').load '#{reps_path(:chamber => :house)}'
+      $('#votes-senate-content').load '#{latest_votes_path(:chamber => :senate)}'
+      $('#votes-house-content').load '#{latest_votes_path(:chamber => :house)}'
+      $('#reps-senate-content').load '#{my_reps_path(:chamber => :senate)}'
+      $('#reps-house-content').load '#{my_reps_path(:chamber => :house)}'
     
 .content-bg
   .container
@@ -20,9 +22,9 @@
               %span= t 'house'
           %hr
           .tabs-content
-            #votes-senate-content
+            #votes-senate-content.tab-content
               .spinner
-            #votes-house-content{ :style => 'display:none;' }
+            #votes-house-content.tab-content{ :style => 'display:none;' }
               .spinner
       .span4
         #reps.well
