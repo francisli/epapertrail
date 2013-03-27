@@ -126,6 +126,15 @@ hr {
   height: 7px;
 }
 
+.bubble {
+  @include border-radius(4px);
+	@include box-shadow(0 0 3px #e1e1e3);
+  font-size: 12px;
+  line-height: 18px;
+  padding: 12px;
+  background-color: $gray;
+}
+
 .portrait {
   position:relative;  
   .frame {
@@ -133,7 +142,6 @@ hr {
   	@include box-shadow(0 0 3px #e1e1e3);
     width:124px;
     height:171px;
-    margin: 3px;
     background-color: white;
     img {
       position: absolute;
@@ -157,7 +165,7 @@ hr {
   }
   .downarrow {
     position: absolute;
-    left: 67px;
+    left: 57px;
     bottom: -8px;
     display: none;
   }  

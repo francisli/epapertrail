@@ -2,15 +2,20 @@
   = link_to t('.not_your_reps'), '#'
 .reps
   - first = true
-  - session[:reps]['results'].each do |rep|
-    - if rep['chamber'] == params[:chamber]
-      .portrait{ :class => "#{first ? 'selected' : ''}" }
-        .frame
-          = link_to rep_path(rep['bioguide_id']) do
-            = image_tag portrait_image_url(rep['bioguide_id'])
-          .name= link_to rep['last_name'], rep_path(rep['bioguide_id'])
-          .party{ :class => rep['party'] }
-        .downarrow
-      - first = false
+  - @reps.each do |rep|
+    .portrait{ :class => "#{first ? 'selected' : ''}", :data => { :bioguide_id => rep['bioguide_id'] } }
+      .frame
+        = link_to rep_path(rep['bioguide_id']) do
+          = image_tag portrait_image_url(rep['bioguide_id'])
+        .name= link_to rep['last_name'], rep_path(rep['bioguide_id'])
+        .party{ :class => rep['party'] }
+      .downarrow
+    - first = false
   .clearfix
-  
+.speeches
+  - first = true
+  - @speeches.each do |speech|
+    .speech.bubble{ :style => "display:#{first ? 'block' : 'none'}", :data => { :bioguide_id => speech['bioguide_id'] } }
+      = truncate speech['speaking'].join(' ').gsub(/(``)|('')/, '"'), :length => 900, :separator => ' '
+    - first = false
+    

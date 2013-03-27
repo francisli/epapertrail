@@ -35,7 +35,7 @@ body.home.index {
       }
       .portrait {
         float: left;
-        margin-left: 8px;
+        margin-left: 22px;
         &:first-child {
           margin-left: 0;
         }
@@ -72,6 +72,9 @@ body.home.index {
     }
     .tabs .tab.selected > span, .tabs .tab.hover > span {
       background-color: $purple;
+    }
+    .speeches {
+      margin-top: 10px;
     }
   }
   #compare {

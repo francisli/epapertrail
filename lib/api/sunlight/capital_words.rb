@@ -4,14 +4,19 @@ module Sunlight
     
     URL_BASE = "http://capitolwords.org/api/1"
     
-    def self.text(bioguide_id)
+    def self.latest_speech(bioguide_id)
       response = HTTParty.get "#{URL_BASE}/text.json", :query => {      
         :bioguide_id => bioguide_id,
-        :order => :date__desc,
-        :start_date => '2013-03-01',
+        :sort => 'id desc',
         :apikey => ENV['SUNLIGHT_API_KEY']
       }
-      response.parsed_response
+      # iterate through, looking for speeches more than 2 lines long
+      latest_speech = nil
+      response.parsed_response['results'].each do |speech|
+        latest_speech = speech
+        break if speech['speaking'].length > 2
+      end
+      latest_speech
     end
     
   end
