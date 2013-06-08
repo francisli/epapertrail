@@ -32,6 +32,31 @@ module Sunlight
       response.parsed_response
     end
     
+    def self.votes_by_legislator(bioguide_id, page = 1)
+      response = HTTParty.get "#{URL_BASE}/votes", :query => {
+        :"voter_ids.#{bioguide_id}__exists" => :true,
+        :order => :voted_at__desc,
+        :fields => 'voted_at,result,breakdown,voter_ids,bill,question',
+        :page => page,
+        :per_page => 50,
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
+    def self.votes_with_legislators(bioguide_id1, bioguide_id2, page = 1)
+      response = HTTParty.get "#{URL_BASE}/votes", :query => {
+        :"voter_ids.#{bioguide_id1}__exists" => :true,
+        :"voter_ids.#{bioguide_id2}__exists" => :true,
+        :order => :voted_at__desc,
+        :fields => 'voted_at,result,breakdown,voter_ids,bill,question',
+        :page => page,
+        :per_page => 50,
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
   end
   
 end
