@@ -3,6 +3,7 @@ Epapertrail::Application.routes.draw do
   root :to => 'home#index'
   match 'my-reps' => 'home#reps', :as => :my_reps
   match 'latest-votes' => 'home#votes', :as => :latest_votes
+  match 'compare' => 'home#compare', :as => :compare
   resources :reps, :only => :show
   resources :bills, :only => :show
   

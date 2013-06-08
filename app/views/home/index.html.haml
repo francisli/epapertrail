@@ -5,7 +5,7 @@
       $('#votes-house-content').load '#{latest_votes_path(:chamber => :house)}'
       $('#reps-senate-content').load '#{my_reps_path(:chamber => :senate)}'
       $('#reps-house-content').load '#{my_reps_path(:chamber => :house)}'
-    
+      $('#compare-content').load '#{compare_path}'
 .content-bg
   .container
     .row
@@ -48,4 +48,6 @@
           %h2= t '.head_to_head'
           %h3= t '.views'
           %p= t '.compare_history'
-          
+          #compare-content
+            .spinner
+            

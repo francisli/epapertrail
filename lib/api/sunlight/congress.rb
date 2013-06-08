@@ -13,6 +13,15 @@ module Sunlight
       response.parsed_response
     end
     
+    def self.legislators_in_office(chamber)
+      response = HTTParty.get "#{URL_BASE}/legislators", :query => {
+        :chamber => chamber,
+        :per_page => :all,
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
     def self.floor_updates(bioguide_id)
       response = HTTParty.get "#{URL_BASE}/floor_updates", :query => {      
         :legislator_ids__all => bioguide_id,
@@ -57,6 +66,16 @@ module Sunlight
       response.parsed_response
     end
     
+    def self.bills_cosponsored(bioguide_id1, bioguide_id2, page = 1)
+      response = HTTParty.get "#{URL_BASE}/bills", :query => {
+        :cosponsor_ids__all => "#{bioguide_id1}|#{bioguide_id2}",
+        :order => :introduced_on__desc,
+        :page => page,
+        :per_page => 50,
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end    
   end
   
 end

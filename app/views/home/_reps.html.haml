@@ -3,13 +3,7 @@
 .reps
   - first = true
   - @reps.each do |rep|
-    .portrait{ :class => "#{first ? 'selected' : ''}", :data => { :bioguide_id => rep['bioguide_id'] } }
-      .frame
-        = link_to rep_path(rep['bioguide_id']) do
-          = image_tag portrait_image_url(rep['bioguide_id'])
-        .name= link_to rep['last_name'], rep_path(rep['bioguide_id'])
-        .party{ :class => rep['party'] }
-      .downarrow
+    = render :partial => 'layouts/portrait', :locals => { :rep => rep, :selected => first }
     - first = false
   .clearfix
 .speeches

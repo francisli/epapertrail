@@ -6,6 +6,14 @@ en:
   senate: Senate
   house: House
   
+  helpers:
+    similarity_label:
+      high: "Separated at birth?"
+      medium: "Kindred spirits"
+      low: "Voting buddies"
+      even: "Common ground"
+      none: "Frenemies"
+  
   time:
     formats:
       legislation: "%A, %-d %B %Y"
@@ -31,3 +39,11 @@ en:
     reps:
       not_your_reps: Not your reps?
       
+    compare:
+      similar: "%{percentage} similar"
+      agreed: "Agreed:"
+      disagreed: "Disagreed:"
+      count_html: "<span>%{count}</span> of <span>%{total}</span> votes"
+      cosponsored: "Co-sponsored:"
+      bills_count_html: "<span>%{count}</span> bills"
+      votes_against: "Votes against their own party:"
