@@ -39,8 +39,8 @@
                 - row_size = params[:chamber] == 'senate' ? 8 : 16
                 - @vote['voters'].each do |bioguide_id, details|
                   - if details['voter']['party'] == party and details['vote'] == vote
-                    .vote{ :class => "#{party} #{params[:chamber]}#{count < row_size ? ' first_row' : ''}#{count%row_size==(row_size-1) ? ' last_col' : ''}", :'data-bioguide-id' => bioguide_id }
-                      %span= details['last_name']
+                    .vote{ class: "#{party} #{params[:chamber]}#{count < row_size ? ' first_row' : ''}#{count%row_size==(row_size-1) ? ' last_col' : ''}", data: { toggle: 'tooltip', title: details['voter']['last_name'], bioguide_id: bioguide_id } }
+                      %span= details['voter']['last_name']
                       %span= vote
                     - count += 1
     - if session[:reps]
@@ -58,7 +58,7 @@
                 - session[:reps]['results'].each do |rep|
                   - if rep['chamber'] == params[:chamber]
                     - if @vote['voters'][rep['bioguide_id']] and @vote['voters'][rep['bioguide_id']]['vote'] == vote
-                      .vote{ :class => "#{rep['party']} senate#{count == 0 ? ' first_row' : ''}", :'data-bioguide-id' => rep['bioguide_id'] }
+                      .vote{ class: "#{rep['party']} senate#{count == 0 ? ' first_row' : ''}", data: { toggle: 'tooltip', title: rep['last_name'], bioguide_id: rep['bioguide_id'] } }
                         .name{ :class => "#{count == 0 ? 'first_row' : ''}"}= rep['last_name']
                       .clearfix
                       - count += 1
