@@ -36,6 +36,13 @@ en:
       follow_speeches: "Follow what your reps are saying from the floors of the Senate and the House."
       compare_history: "Compare the recent voting history of two representatives of your choice."
       
+    votes:
+      of: of
+      voting: voting
+      yeas: Yeas
+      nays: Nays
+      full_details: Full details
+      
     reps:
       not_your_reps: Not your reps?
       
@@ -46,4 +53,4 @@ en:
       count_html: "<span>%{count}</span> of <span>%{total}</span> votes"
       cosponsored: "Co-sponsored:"
       bills_count_html: "<span>%{count}</span> bills"
-      votes_against: "Votes against their own party:"
+      votes_against: "Voted against their own party:"
