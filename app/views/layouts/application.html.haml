@@ -58,7 +58,7 @@
     
     .container
       %footer
-        = t '.copyright_html'
+        = t '.copyright_html', present: Time.now.utc.year
 
     = javascript_include_tag "application"
     = yield :footer

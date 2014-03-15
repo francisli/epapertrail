@@ -21,7 +21,7 @@ en:
   layouts:
     
     application:
-      copyright_html: Copyright &copy; 2009, 2013 by <a href="http://www.francisli.com/">Francis Li</a> and Simona Brusa Pasqu&eacute;
+      copyright_html: Copyright &copy; 2009 - %{present} by <a href="http://www.francisli.com/">Francis Li</a> and Simona Brusa Pasqu&eacute;
 
   home:
     
