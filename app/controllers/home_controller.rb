@@ -6,7 +6,14 @@ class HomeController < ApplicationController
   
   def reps
     # fetch reps, if not set session
-    session[:reps] = Sunlight::Congress.legislators_locate(session[:location][:lat], session[:location][:lng]) if session[:reps].blank?
+    if session[:reps].blank?
+      session[:reps] = { }
+      session[:reps]['results'] = []
+      reps = Sunlight::Congress.legislators_locate(session[:location][:lat], session[:location][:lng])
+      reps['results'].each do |rep|
+        session[:reps]['results'] << rep.slice('chamber', 'party', 'bioguide_id', 'last_name')
+      end
+    end
     # fetch reps and speeches for specified chamber
     @reps = []
     @speeches = []

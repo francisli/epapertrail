@@ -1,11 +1,11 @@
 Epapertrail::Application.routes.draw do
   
-  root :to => 'home#index'
-  match 'my-reps' => 'home#reps', :as => :my_reps
-  match 'latest-votes' => 'home#votes', :as => :latest_votes
-  match 'compare' => 'home#compare', :as => :compare
-  resources :reps, :only => :show
-  resources :bills, :only => :show
+  root to: 'home#index'
+  get 'my-reps', to: 'home#reps', as: 'my_reps'
+  get 'latest-votes', to: 'home#votes', as: 'latest_votes'
+  get 'compare', to: 'home#compare'
+  resources :reps, only: [ :show ]
+  resources :bills, only: [ :show ]
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
