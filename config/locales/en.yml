@@ -34,7 +34,7 @@ en:
       views: "How different are their views?"
       track_votes: "Track the votes of your representatives in the Senate and the House."
       follow_speeches: "Follow what your reps are saying from the floors of the Senate and the House."
-      compare_history: "Compare the voting history of two representatives of your choice."
+      compare_history: "Compare the recent voting history of two representatives of your choice."
       
     reps:
       not_your_reps: Not your reps?

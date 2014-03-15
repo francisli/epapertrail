@@ -33,11 +33,18 @@ body.home.index {
         text-align: center;
         font-size: 12px;
       }
+      .reps {
+        position: relative;
+        max-width: 268px;
+        height: 171px;
+        margin: 0 auto;
+      }
       .portrait {
-        float: left;
-        margin-left: 22px;
+        position: absolute;
+        top: 0;
+        right: 0;
         &:first-child {
-          margin-left: 0;
+          left: 0;
         }
       }
     }
