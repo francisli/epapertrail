@@ -64,7 +64,11 @@ class HomeController < ApplicationController
       @votes_against[@legislator1['bioguide_id']] += 1 if vote1 != party_vote1
       @votes_against[@legislator2['bioguide_id']] += 1 if vote2 != party_vote2
     end
-    @counts[:similarity] = @counts[:agreed]*100/@counts[:total]
+    if @counts[:total].zero?
+      @counts[:similarity] = 0
+    else
+      @counts[:similarity] = @counts[:agreed]*100/@counts[:total]
+    end
     # get bill sponsorship stats
     response = Sunlight::Congress.bills_cosponsored(@legislator1['bioguide_id'], @legislator2['bioguide_id'])
     @counts[:cosponsored] = response['count']

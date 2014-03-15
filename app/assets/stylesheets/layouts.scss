@@ -147,6 +147,7 @@ hr {
 .portrait {
   position:relative;  
   .frame {
+    position:relative;  
     border-radius: 4px;
   	@include box-shadow(0 0 3px #e1e1e3);
     width:124px;
@@ -170,6 +171,10 @@ hr {
       bottom: 6px;
       font-size: 11px;
       text-transform: uppercase;
+      width: 70px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .party {
       position: absolute;

@@ -65,8 +65,8 @@ body.home.index {
       color: $purple;
     }
     hr {
-      border-top-color:#d6d6e4;
-      border-bottom-color:#666699;
+      border-top-color: #d6d6e4;
+      border-bottom-color: $purple;
     }
     .spinner {
       background-image: image-url('spinner-purple.gif');
@@ -82,6 +82,7 @@ body.home.index {
     }
     .speeches {
       margin-top: 10px;
+      margin-bottom: 10px;
     }
   }
   #compare {
@@ -92,11 +93,53 @@ body.home.index {
       color: $brown;
     }
     hr {
-      border-top-color:#ede5e1;
-      border-bottom-color:#c9b0a6;
+      border-top-color: #ede5e1;
+      border-bottom-color: $brown;
     }
     .spinner {
       background-image: image-url('spinner-brown.gif');      
+    }
+    .stats {
+      margin-top: 20px;
+      text-align: center;
+      color: $brown;
+      dl {
+        dt, dd {
+          display: inline-block;
+          width: 49%;
+        }
+        dt {
+          text-align: right;
+        }
+        dd {
+          text-align: left;
+          font-family: $font-family-serif;
+          font-style: italic;
+          color: #999;
+          a {
+            font-style: bold;
+          }
+          span {
+            font-family: $font-family-sans-serif;
+            font-style: normal;
+          }
+        }
+      }
+    }
+    .tabs .tab {
+      padding-left: 0;
+      padding-right: 0;
+      span {
+        display: inline-block;
+        width: 100%;
+        border-color: $brown;
+      }
+    }
+    .tabs .tab.selected {
+      background-image: image-url('down-brown.gif');
+    }
+    .tabs .tab.selected > span, .tabs .tab.hover > span {
+      background-color: $brown;
     }
   }
 }

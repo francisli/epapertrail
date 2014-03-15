@@ -1,8 +1,9 @@
 .tabs
-  %span
+  %span.tab.selected
     %span= similarity_label(@counts[:similarity])
 %hr
 .tab-content
+  .controls &nbsp;
   .reps
     = render :partial => 'layouts/portrait', :locals => { :rep => @legislator1, :selected => false }
     = render :partial => 'layouts/portrait', :locals => { :rep => @legislator2, :selected => false }
@@ -11,15 +12,15 @@
     %h4= t '.similar', :percentage => number_to_percentage(@counts[:similarity], :precision => 0)
     %dl
       %dt= t '.agreed'
-      %dd= t '.count_html', :count => @counts[:agreed], :total => @counts[:total]
+      %dd= t '.count_html', :count => link_to(@counts[:agreed], '#'), :total => @counts[:total]
       %dt= t '.disagreed'
-      %dd= t '.count_html', :count => @counts[:total]-@counts[:agreed], :total => @counts[:total]
+      %dd= t '.count_html', :count => link_to(@counts[:total]-@counts[:agreed], '#'), :total => @counts[:total]
       %dt= t '.cosponsored'
-      %dd= t '.bills_count_html', :count => @counts[:cosponsored]
+      %dd= t '.bills_count_html', :count => link_to(@counts[:cosponsored], '#')
     %h4= t '.votes_against'
     %dl
       %dt #{@legislator1['last_name']}:
-      %dd= t '.count_html', :count => @votes_against[@legislator1['bioguide_id']], :total => @counts[:total]
+      %dd= t '.count_html', :count => link_to(@votes_against[@legislator1['bioguide_id']], '#'), :total => @counts[:total]
       %dt #{@legislator2['last_name']}:
-      %dd= t '.count_html', :count => @votes_against[@legislator2['bioguide_id']], :total => @counts[:total]      
+      %dd= t '.count_html', :count => link_to(@votes_against[@legislator2['bioguide_id']], '#'), :total => @counts[:total]      
       
