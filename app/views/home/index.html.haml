@@ -6,48 +6,47 @@
       $('#reps-senate-content').load '#{my_reps_path(:chamber => :senate)}'
       $('#reps-house-content').load '#{my_reps_path(:chamber => :house)}'
       $('#compare-content').load '#{compare_path}'
-.content-bg
-  .container
-    .row
-      .span4
-        #votes.well
-          %h2= t '.bills_and_resolutions'
-          %h3= t '.latest_legislation'
-          %p= t '.track_votes'
-          .tabs
-            %span#votes-senate.tab.selected
-              %span= t 'senate'
-            %span.separator
-            %span#votes-house.tab
-              %span= t 'house'
-          %hr
-          .tabs-content
-            #votes-senate-content.tab-content
-              .spinner
-            #votes-house-content.tab-content{ :style => 'display:none;' }
-              .spinner
-      .span4
-        #reps.well
-          %h2= t '.from_the_floor'
-          %h3= t '.saying'
-          %p= t '.follow_speeches'
-          .tabs
-            %span#reps-senate.tab.selected
-              %span= t 'senate'
-            %span.separator
-            %span#reps-house.tab
-              %span= t 'house'
-          %hr          
-          .tabs-content
-            #reps-senate-content.tab-content
-              .spinner
-            #reps-house-content.tab-content{ :style => 'display:none;' }
-              .spinner
-      .span4
-        #compare.well
-          %h2= t '.head_to_head'
-          %h3= t '.views'
-          %p= t '.compare_history'
-          #compare-content
+.container.container-bg
+  .row
+    .col-md-4
+      #votes.well
+        %h2= t '.bills_and_resolutions'
+        %h3= t '.latest_legislation'
+        %p= t '.track_votes'
+        .tabs
+          %span#votes-senate.tab.selected
+            %span= t 'senate'
+          %span.separator
+          %span#votes-house.tab
+            %span= t 'house'
+        %hr
+        .tabs-content
+          #votes-senate-content.tab-content
             .spinner
+          #votes-house-content.tab-content{ :style => 'display:none;' }
+            .spinner
+    .col-md-4
+      #reps.well
+        %h2= t '.from_the_floor'
+        %h3= t '.saying'
+        %p= t '.follow_speeches'
+        .tabs
+          %span#reps-senate.tab.selected
+            %span= t 'senate'
+          %span.separator
+          %span#reps-house.tab
+            %span= t 'house'
+        %hr          
+        .tabs-content
+          #reps-senate-content.tab-content
+            .spinner
+          #reps-house-content.tab-content{ :style => 'display:none;' }
+            .spinner
+    .col-md-4
+      #compare.well
+        %h2= t '.head_to_head'
+        %h3= t '.views'
+        %p= t '.compare_history'
+        #compare-content
+          .spinner
             

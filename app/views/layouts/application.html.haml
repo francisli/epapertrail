@@ -35,9 +35,9 @@
       }(document, 'script', 'facebook-jssdk'));
     - unless @hide_navbar
       .navbar.navbar-fixed-top
-        .navbar-inner
-          .container
-            = link_to root_path, :class => 'brand' do
+        .container
+          .navbar-header
+            = link_to root_path, :class => 'navbar-brand' do
               %span e-PaperTrail
       - if flash[:alert]
         .container

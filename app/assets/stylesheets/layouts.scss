@@ -1,11 +1,14 @@
-.navbar-inner {
+.navbar {
+  height: 85px;
   background: white;
+  @include box-shadow(0 1px 10px rgba(0,0,0,0.1));
 }
 
-a.brand {
+a.navbar-brand {
   background: transparent image-url('logo.gif') no-repeat center center;
   width: 277px;
   height: 64px;
+  margin-top: 10px;
   span {
     position: relative;
     left: -100000px;
@@ -34,11 +37,9 @@ hr {
   margin: 0;
 }
 
-.content-bg {
+.container-bg {
 	background: white;
-	width: 1020px;
-	margin: 0 auto;
-	padding: 20px 0;
+  padding-top: 20px;
 	@include box-shadow(0 0 3px #e1e1e3);
 	border-bottom: 1px solid white;
 }
@@ -58,7 +59,7 @@ hr {
   height: 40px;
   line-height: 40px;
   text-align: center;
-  font-family: $serifFontFamily;
+  font-family: $font-family-serif;
   overflow: visible;
 }
 
@@ -127,7 +128,7 @@ hr {
 }
 
 .bubble {
-  @include border-radius(4px);
+  border-radius: 4px;
 	@include box-shadow(0 0 3px #e1e1e3);
   font-size: 12px;
   line-height: 18px;
@@ -138,7 +139,7 @@ hr {
 .portrait {
   position:relative;  
   .frame {
-    @include border-radius(4px);
+    border-radius: 4px;
   	@include box-shadow(0 0 3px #e1e1e3);
     width:124px;
     height:171px;
@@ -192,7 +193,7 @@ hr {
     }
     .of {
       font-style: italic;
-      font-family: $serifFontFamily;
+      font-family: $font-family-serif;
     }
   }
   .grid {
@@ -239,7 +240,7 @@ hr {
             overflow:visible;
             text-transform: uppercase;
             span {
-              font-family: $serifFontFamily;
+              font-family: $font-family-serif;
               font-style: italic;
             }
           }
@@ -319,7 +320,7 @@ hr {
   .title {
     font-size: 18px;
     line-height: 22px;
-    font-family:'Lucida Sans Demibold Roman',$serifFontFamily;
+    font-family:'Lucida Sans Demibold Roman',$font-family-serif;
     margin-bottom: 10px;
   }
 }
