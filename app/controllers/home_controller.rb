@@ -26,6 +26,21 @@ class HomeController < ApplicationController
     render :partial => 'reps'
   end
   
+  def set_reps
+    if params[:address_data].blank?
+      head :unprocessable_entity
+    else
+      data = JSON.parse(params[:address_data])
+      session[:reps] = { }
+      session[:reps]['results'] = []
+      reps = Sunlight::Congress.legislators_locate(data['geometry']['location']['k'], data['geometry']['location']['A'])
+      reps['results'].each do |rep|
+        session[:reps]['results'] << rep.slice('chamber', 'party', 'bioguide_id', 'last_name')
+      end
+      head :ok
+    end    
+  end
+  
   def votes
     response = Sunlight::Congress.latest_vote(params[:chamber])
     @vote = response['results'].first

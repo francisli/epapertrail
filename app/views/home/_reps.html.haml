@@ -1,15 +1,15 @@
 .controls
-  = link_to t('.not_your_reps'), '#'
-.reps
-  - first = true
-  - @reps.each do |rep|
-    = render :partial => 'layouts/portrait', :locals => { :rep => rep, :selected => first }
-    - first = false
-  .clearfix
-.speeches
-  - first = true
-  - @speeches.each do |speech|
-    .speech.bubble{ :style => "display:#{first ? 'block' : 'none'}", :data => { :bioguide_id => speech['bioguide_id'] } }
-      = truncate speech['speaking'].join(' ').gsub(/(``)|('')/, '"'), :length => 900, :separator => ' '
-    - first = false
-    
+  = link_to t('.not_your_reps'), '#', class: 'not-my-reps'
+.results
+  .reps
+    - first = true
+    - @reps.each do |rep|
+      = render :partial => 'layouts/portrait', :locals => { :rep => rep, :selected => first }
+      - first = false
+    .clearfix
+  .speeches
+    - first = true
+    - @speeches.each do |speech|
+      .speech.bubble{ :style => "display:#{first ? 'block' : 'none'}", :data => { :bioguide_id => speech['bioguide_id'] } }
+        = truncate speech['speaking'].join(' ').gsub(/(``)|('')/, '"'), :length => 900, :separator => ' '
+      - first = false

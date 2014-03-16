@@ -60,5 +60,6 @@
       %footer
         = t '.copyright_html', present: Time.now.utc.year
 
+    = javascript_include_tag "//maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}&libraries=places&sensor=false"
     = javascript_include_tag "application"
     = yield :footer

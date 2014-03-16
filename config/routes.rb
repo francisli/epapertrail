@@ -2,6 +2,7 @@ Epapertrail::Application.routes.draw do
   
   root to: 'home#index'
   get 'my-reps', to: 'home#reps', as: 'my_reps'
+  post 'my-reps', to: 'home#set_reps'
   get 'latest-votes', to: 'home#votes', as: 'latest_votes'
   get 'compare', to: 'home#compare'
   resources :reps, only: [ :show ]

@@ -84,6 +84,13 @@ body.home.index {
       margin-top: 10px;
       margin-bottom: 10px;
     }
+    form {
+      margin: 10px;
+    }
+    .btn-primary {
+      border-color: $purple;
+      background-color: $purple;
+    }
   }
   #compare {
     h2 {

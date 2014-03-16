@@ -1,11 +1,3 @@
-- content_for :footer do
-  :coffee
-    $ ->
-      $('#votes-senate-content').load '#{latest_votes_path(:chamber => :senate)}'
-      $('#votes-house-content').load '#{latest_votes_path(:chamber => :house)}'
-      $('#reps-senate-content').load '#{my_reps_path(:chamber => :senate)}'
-      $('#reps-house-content').load '#{my_reps_path(:chamber => :house)}'
-      $('#compare-content').load '#{compare_path}'
 .container.container-bg
   .row
     .col-md-4
@@ -42,6 +34,14 @@
             .spinner
           #reps-house-content.tab-content{ :style => 'display:none;' }
             .spinner
+        = form_tag my_reps_path, id: 'my-reps', style: "display:none;", remote: true do
+          .form-group
+            = label_tag :address, t('.address')
+            = text_field_tag :address, nil, class: 'address form-control', placeholder: t('.address_placeholder')
+            = hidden_field_tag :address_data, nil, class: 'address_data'
+          = submit_tag t('.submit'), class: 'btn btn-primary'
+          = t '.or'
+          = link_to t('.cancel'), '#', class: 'cancel'
     .col-md-4
       #compare.well
         %h2= t '.head_to_head'
