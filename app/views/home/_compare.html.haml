@@ -1,26 +1,57 @@
 .tabs
-  %span.tab.selected
+  %span#compare-results.tab.selected
     %span= similarity_label(@counts[:similarity])
+  %span#compare-senate.tab{ style: 'display:none;' }
+    %span= t 'senate'
+  %span.separator{ style: 'display:none;' }
+  %span#compare-house.tab{ style: 'display:none;' }
+    %span= t 'house'
 %hr
-.tab-content
-  .controls &nbsp;
-  .reps
-    = render :partial => 'layouts/portrait', :locals => { :rep => @legislator1, :selected => false }
-    = render :partial => 'layouts/portrait', :locals => { :rep => @legislator2, :selected => false }
-    .clearfix
-  .stats
-    %h4= t '.similar', :percentage => number_to_percentage(@counts[:similarity], :precision => 0)
-    %dl
-      %dt= t '.agreed'
-      %dd= t '.count_html', :count => link_to(@counts[:agreed], '#'), :total => @counts[:total]
-      %dt= t '.disagreed'
-      %dd= t '.count_html', :count => link_to(@counts[:total]-@counts[:agreed], '#'), :total => @counts[:total]
-      %dt= t '.cosponsored'
-      %dd= t '.bills_count_html', :count => link_to(@counts[:cosponsored], '#')
-    %h4= t '.votes_against'
-    %dl
-      %dt #{@legislator1['last_name']}:
-      %dd= t '.count_html', :count => link_to(@votes_against[@legislator1['bioguide_id']], '#'), :total => @counts[:total]
-      %dt #{@legislator2['last_name']}:
-      %dd= t '.count_html', :count => link_to(@votes_against[@legislator2['bioguide_id']], '#'), :total => @counts[:total]      
-      
+.tabs-content
+  #compare-results-content.tab-content
+    .controls
+      = link_to t('.change_reps'), '#', class: 'change-reps'
+    .reps
+      = render :partial => 'layouts/portrait', :locals => { :rep => @legislator1, :selected => false }
+      = render :partial => 'layouts/portrait', :locals => { :rep => @legislator2, :selected => false }
+      .clearfix
+    .stats
+      %h4= t '.similar', :percentage => number_to_percentage(@counts[:similarity], :precision => 0)
+      %dl
+        %dt= t '.agreed'
+        %dd= t '.count_html', :count => link_to(@counts[:agreed], '#'), :total => @counts[:total]
+        %dt= t '.disagreed'
+        %dd= t '.count_html', :count => link_to(@counts[:total]-@counts[:agreed], '#'), :total => @counts[:total]
+        %dt= t '.cosponsored'
+        %dd= t '.bills_count_html', :count => link_to(@counts[:cosponsored], '#')
+      %h4= t '.votes_against'
+      %dl
+        %dt #{@legislator1['last_name']}:
+        %dd= t '.count_html', :count => link_to(@votes_against[@legislator1['bioguide_id']], '#'), :total => @counts[:total]
+        %dt #{@legislator2['last_name']}:
+        %dd= t '.count_html', :count => link_to(@votes_against[@legislator2['bioguide_id']], '#'), :total => @counts[:total]      
+  = form_tag compare_path, id: 'compare-house-content', class: 'tab-content', style: "display:none;", remote: true do
+    .form-group
+      = label_tag :compare_rep1, t('.first_rep')
+      = text_field_tag :compare_rep1, nil, class: 'compare_rep1 form-control'
+      = hidden_field_tag :compare_rep1_bioguide_id, nil, class: 'compare_rep1_bioguide_id'
+    .form-group
+      = label_tag :compare_rep2, t('.second_rep')
+      = text_field_tag :compare_rep2, nil, class: 'compare_rep2 form-control'
+      = hidden_field_tag :compare_rep2_bioguide_id, nil, class: 'compare_rep2_bioguide_id'
+    = submit_tag t('.submit'), class: 'btn btn-primary'
+    = t '.or'
+    = link_to t('.cancel'), '#', class: 'cancel'
+  = form_tag compare_path, id: 'compare-senate-content', class: 'tab-content', style: "display:none;", remote: true do
+    .form-group
+      = label_tag :compare_senator1, t('.first_senator')
+      = text_field_tag :compare_senator1, nil, class: 'compare_senator1 form-control'
+      = hidden_field_tag :compare_senator1_bioguide_id, nil, class: 'compare_senator1_bioguide_id'
+    .form-group
+      = label_tag :compare_senator2, t('.second_senator')
+      = text_field_tag :compare_senator2, nil, class: 'compare_senator2 form-control'
+      = hidden_field_tag :compare_senator2_bioguide_id, nil, class: 'compare_senator2_bioguide_id'
+    = submit_tag t('.submit'), class: 'btn btn-primary'
+    = t '.or'
+    = link_to t('.cancel'), '#', class: 'cancel'
+                

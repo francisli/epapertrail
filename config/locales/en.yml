@@ -52,6 +52,14 @@ en:
       not_your_reps: Not your reps?
       
     compare:
+      change_reps: Change reps?
+      first_rep: First Representative
+      second_rep: Second Representative
+      first_senator: First Senator
+      second_senator: Second Senator
+      submit: Submit
+      or: or
+      cancel: Cancel
       similar: "%{percentage} similar"
       agreed: "Agreed:"
       disagreed: "Disagreed:"

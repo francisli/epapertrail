@@ -103,6 +103,9 @@ body.home.index {
       border-top-color: #ede5e1;
       border-bottom-color: $brown;
     }
+    #compare-content {
+      margin: 0 8px;
+    }
     .spinner {
       background-image: image-url('spinner-brown.gif');      
     }
@@ -133,7 +136,7 @@ body.home.index {
         }
       }
     }
-    .tabs .tab {
+    .tabs #compare-results {
       padding-left: 0;
       padding-right: 0;
       span {
@@ -147,6 +150,9 @@ body.home.index {
     }
     .tabs .tab.selected > span, .tabs .tab.hover > span {
       background-color: $brown;
+    }
+    form {
+      margin: 10px 0;
     }
   }
 }

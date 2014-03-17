@@ -1,6 +1,24 @@
 $ ->
   $('body.home.index').each ->
     
+    $('#compare').on 'click', 'a.change-reps', ->
+      $compare = $('#compare')
+      $compare.find('span.tab, span.separator').show()
+      $compare.find('span#compare-senate.tab').addClass('selected')
+      $('#compare-results').hide()
+      $('#compare-results-content').hide()
+      $('#compare-senate-content').show()    
+      return false
+      
+    $('#compare').on 'click', 'a.cancel', ->
+      $compare = $('#compare')
+      $compare.find('span.tab, span.separator').removeClass('selected').hide()
+      $('#compare-results').addClass('selected').show()
+      $('#compare-results-content').show()
+      $('#compare-senate-content').hide()    
+      $('#compare-house-content').hide()    
+      return false
+    
     $('#reps').on 'mouseenter', '.portrait', ->
       portrait = $(this)
       unless portrait.hasClass('selected')
