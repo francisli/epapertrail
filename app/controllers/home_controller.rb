@@ -11,7 +11,7 @@ class HomeController < ApplicationController
       session[:reps]['results'] = []
       reps = Sunlight::Congress.legislators_locate(session[:location][:lat], session[:location][:lng])
       reps['results'].each do |rep|
-        session[:reps]['results'] << rep.slice('chamber', 'party', 'bioguide_id', 'last_name')
+        session[:reps]['results'] << rep.slice('chamber', 'party', 'bioguide_id', 'last_name', 'state')
       end
     end
     # fetch reps and speeches for specified chamber

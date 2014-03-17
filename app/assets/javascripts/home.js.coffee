@@ -19,7 +19,7 @@ $ ->
       $('#compare-house-content').hide()    
       return false
       
-    reps = new Bloodhound
+    repsEngine = new Bloodhound
       name: 'reps',
       datumTokenizer: (d)->
         tokens = []
@@ -32,9 +32,9 @@ $ ->
         url: '/legislators?chamber=house'
         filter: (parsedResponse)->
           return parsedResponse['results']
-    reps.initialize()
+    repsEngine.initialize()
       
-    senators = new Bloodhound
+    senatorsEngine = new Bloodhound
       name: 'senators',
       datumTokenizer: (d)->
         tokens = []
@@ -47,7 +47,7 @@ $ ->
         url: '/legislators?chamber=senate'
         filter: (parsedResponse)->
           return parsedResponse['results']
-    senators.initialize()
+    senatorsEngine.initialize()
       
     initializeTypeahead = ($input, engine)->
       $input.typeahead null,
@@ -60,10 +60,10 @@ $ ->
         
     initializeCompareForms = ->
       $compare = $('#compare')
-      initializeTypeahead $compare.find('input#compare_rep1'), reps
-      initializeTypeahead $compare.find('input#compare_rep2'), reps
-      initializeTypeahead $compare.find('input#compare_senator1'), senators
-      initializeTypeahead $compare.find('input#compare_senator2'), senators
+      initializeTypeahead $compare.find('input#compare_rep1'), repsEngine
+      initializeTypeahead $compare.find('input#compare_rep2'), repsEngine
+      initializeTypeahead $compare.find('input#compare_senator1'), senatorsEngine 
+      initializeTypeahead $compare.find('input#compare_senator2'), senatorsEngine 
       
     $('#compare').on 'ajax:send', 'form', (event, data, status, xhr)->
       $('#compare .tab-content').hide()
