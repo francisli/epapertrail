@@ -18,6 +18,61 @@ $ ->
       $('#compare-senate-content').hide()    
       $('#compare-house-content').hide()    
       return false
+      
+    reps = new Bloodhound
+      name: 'reps',
+      datumTokenizer: (d)->
+        tokens = []
+        tokens.push d['first_name']
+        tokens.push d['middle_name']
+        tokens.push d['last_name']
+        tokens
+      queryTokenizer: Bloodhound.tokenizers.whitespace
+      prefetch:
+        url: '/legislators?chamber=house'
+        filter: (parsedResponse)->
+          return parsedResponse['results']
+    reps.initialize()
+      
+    senators = new Bloodhound
+      name: 'senators',
+      datumTokenizer: (d)->
+        tokens = []
+        tokens.push d['first_name']
+        tokens.push d['middle_name']
+        tokens.push d['last_name']
+        tokens
+      queryTokenizer: Bloodhound.tokenizers.whitespace
+      prefetch:
+        url: '/legislators?chamber=senate'
+        filter: (parsedResponse)->
+          return parsedResponse['results']
+    senators.initialize()
+      
+    initializeTypeahead = ($input, engine)->
+      $input.typeahead null,
+        displayKey: (d)->
+          "#{d['first_name']} #{d['last_name']} (#{d['party']}-#{d['state']})"
+        source: engine.ttAdapter()
+      $input.on 'typeahead:selected typeahead:autocompleted', (event, d, dataset)->
+        id = $input.attr 'id'
+        $("input##{id}_data").val JSON.stringify(d)
+        
+    initializeCompareForms = ->
+      $compare = $('#compare')
+      initializeTypeahead $compare.find('input#compare_rep1'), reps
+      initializeTypeahead $compare.find('input#compare_rep2'), reps
+      initializeTypeahead $compare.find('input#compare_senator1'), senators
+      initializeTypeahead $compare.find('input#compare_senator2'), senators
+      
+    $('#compare').on 'ajax:send', 'form', (event, data, status, xhr)->
+      $('#compare .tab-content').hide()
+      $('#compare .tabs span').css('visibility', 'hidden')
+      $('#compare-content').append('<div class="spinner"></div>')
+      
+    $('#compare').on 'ajax:success', 'form', (event, data, status, xhr)->
+      $('#compare-content').html(data)
+      initializeCompareForms()
     
     $('#reps').on 'mouseenter', '.portrait', ->
       portrait = $(this)
@@ -68,5 +123,6 @@ $ ->
     $('#votes-house-content').load '/latest-votes?chamber=house'
     $('#reps-senate-content').load '/my-reps?chamber=senate'
     $('#reps-house-content').load '/my-reps?chamber=house'
-    $('#compare-content').load '/compare'
+    $('#compare-content').load '/compare', ->
+      initializeCompareForms()
     

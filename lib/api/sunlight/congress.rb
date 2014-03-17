@@ -2,7 +2,7 @@ module Sunlight
   
   class Congress
     
-    URL_BASE = "http://congress.api.sunlightfoundation.com"
+    URL_BASE = "https://congress.api.sunlightfoundation.com"
     
     def self.legislators_locate(lat, lng)
       response = HTTParty.get "#{URL_BASE}/legislators/locate", :query => {      

@@ -48,21 +48,29 @@ class HomeController < ApplicationController
   end
   
   def compare
-    # pick a chamber
-    chamber = ['house', 'senate'].sample
-    # pick two currently serving members from different parties
-    response = Sunlight::Congress.legislators_in_office(chamber)
-    parties = { 'R' => [], 'D' => [], 'I' => [] }
-    response['results'].each do |legislator|
-      parties[legislator['party']] << legislator
+    if params[:compare_rep1_data] && params[:compare_rep2_data]
+      @legislator1 = JSON.parse(params[:compare_rep1_data])
+      @legislator2 = JSON.parse(params[:compare_rep2_data])
+    elsif params[:compare_senator1_data] && params[:compare_senator2_data]
+      @legislator1 = JSON.parse(params[:compare_senator1_data])
+      @legislator2 = JSON.parse(params[:compare_senator2_data])
+    else
+      # pick a chamber
+      chamber = ['house', 'senate'].sample
+      # pick two currently serving members from different parties
+      response = Sunlight::Congress.legislators_in_office(chamber)
+      parties = { 'R' => [], 'D' => [], 'I' => [] }
+      response['results'].each do |legislator|
+        parties[legislator['party']] << legislator
+      end
+      @legislator1 = response['results'].sample
+      parties.delete(@legislator1['party'])
+      legislators = []
+      parties.each do |k, v|
+        legislators += v
+      end
+      @legislator2 = legislators.sample
     end
-    @legislator1 = response['results'].sample
-    parties.delete(@legislator1['party'])
-    legislators = []
-    parties.each do |k, v|
-      legislators += v
-    end
-    @legislator2 = legislators.sample
     # get vote history
     response = Sunlight::Congress.votes_with_legislators(@legislator1['bioguide_id'], @legislator2['bioguide_id'])
     @counts = { :agreed => 0, :total => 0 }
@@ -89,6 +97,11 @@ class HomeController < ApplicationController
     @counts[:cosponsored] = response['count']
     # 
     render :partial => 'compare'
+  end
+  
+  def legislators
+    response = Sunlight::Congress.legislators_in_office(params[:chamber])
+    render json: response
   end
   
 end

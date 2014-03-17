@@ -17,7 +17,7 @@ body.home.index {
       font-weight: normal;
       text-align: center;
     }
-    p {
+    &> p {
       font-family: $font-family-serif;
       font-style: italic;
       text-align: center;
@@ -153,6 +153,9 @@ body.home.index {
     }
     form {
       margin: 10px 0;
+      span.twitter-typeahead {
+        width: 100%;
+      }
     }
   }
 }

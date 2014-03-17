@@ -45,6 +45,27 @@ hr {
   margin: 0;
 }
 
+.tt-dropdown-menu {
+  border: 1px solid $gray;
+  border-radius: 4px;
+  background-color: white;
+  width: 100%;
+  .tt-suggestion {
+    border-top: 1px solid $gray;
+    padding: 10px;
+    p {
+      margin: 0;
+    }
+    &:first-child {
+      border: 0;
+    }
+    &.tt-cursor {
+      cursor: pointer;
+      background-color: $gray;
+    }
+  }
+}
+
 .form-control {
   color: #666;
 }

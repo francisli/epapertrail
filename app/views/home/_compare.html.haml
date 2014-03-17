@@ -34,11 +34,11 @@
     .form-group
       = label_tag :compare_rep1, t('.first_rep')
       = text_field_tag :compare_rep1, nil, class: 'compare_rep1 form-control'
-      = hidden_field_tag :compare_rep1_bioguide_id, nil, class: 'compare_rep1_bioguide_id'
+      = hidden_field_tag :compare_rep1_data, nil, class: 'compare_rep1_bioguide_id'
     .form-group
       = label_tag :compare_rep2, t('.second_rep')
       = text_field_tag :compare_rep2, nil, class: 'compare_rep2 form-control'
-      = hidden_field_tag :compare_rep2_bioguide_id, nil, class: 'compare_rep2_bioguide_id'
+      = hidden_field_tag :compare_rep2_data, nil, class: 'compare_rep2_bioguide_id'
     = submit_tag t('.submit'), class: 'btn btn-primary'
     = t '.or'
     = link_to t('.cancel'), '#', class: 'cancel'
@@ -46,11 +46,11 @@
     .form-group
       = label_tag :compare_senator1, t('.first_senator')
       = text_field_tag :compare_senator1, nil, class: 'compare_senator1 form-control'
-      = hidden_field_tag :compare_senator1_bioguide_id, nil, class: 'compare_senator1_bioguide_id'
+      = hidden_field_tag :compare_senator1_data, nil, class: 'compare_senator1_bioguide_id'
     .form-group
       = label_tag :compare_senator2, t('.second_senator')
       = text_field_tag :compare_senator2, nil, class: 'compare_senator2 form-control'
-      = hidden_field_tag :compare_senator2_bioguide_id, nil, class: 'compare_senator2_bioguide_id'
+      = hidden_field_tag :compare_senator2_data, nil, class: 'compare_senator2_bioguide_id'
     = submit_tag t('.submit'), class: 'btn btn-primary'
     = t '.or'
     = link_to t('.cancel'), '#', class: 'cancel'
