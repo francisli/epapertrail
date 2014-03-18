@@ -2,9 +2,17 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  
+  of: of
   senate: Senate
   house: House
+  
+  party:
+    D: Democrat
+    R: Republican
+    I: Independent
+  title:
+    Sen: Senator
+    Rep: Representative
   
   helpers:
     similarity_label:

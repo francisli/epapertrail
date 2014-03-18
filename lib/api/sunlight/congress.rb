@@ -22,6 +22,20 @@ module Sunlight
       response.parsed_response
     end
     
+    def self.legislator(bioguide_id)
+      response = HTTParty.get "#{URL_BASE}/legislators", :query => {
+        :bioguide_id => bioguide_id,
+        :all_legislators => true,
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response = response.parsed_response
+      if response['results'] && response['results'].length == 1
+        Legislator.new response['results'][0]
+      else
+        nil
+      end
+    end
+    
     def self.floor_updates(bioguide_id)
       response = HTTParty.get "#{URL_BASE}/floor_updates", :query => {      
         :legislator_ids__all => bioguide_id,

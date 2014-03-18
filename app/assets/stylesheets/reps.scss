@@ -1,0 +1,43 @@
+body.reps.show {
+  .profile-portrait {
+    position: absolute;
+    .downarrow {
+      display: none;
+    }
+  }
+  .profile {
+    min-height: 180px;
+    margin-left: 145px;
+    margin-bottom: 20px;
+    .profile-name {
+      margin-bottom: 20px;
+    }
+    .profile-party {
+      margin-bottom: 20px;
+    }
+    .profile-title {
+      span {
+        font-family: $font-family-serif;
+        font-style: italic;
+      }
+    }
+  }
+  .profile-contact {
+    margin-bottom: 20px;
+    dl {
+      @include clearfix;
+      font-size: 12px;
+      dt {
+        float: left;
+        clear: left;
+        color: $green;
+        &:after {
+          content: ':\0000a0';
+        }
+      }
+      dd {
+        float: left;
+      }      
+    }
+  }
+}

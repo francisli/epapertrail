@@ -1,0 +1,38 @@
+.container.container-bg
+  .row
+    %ol.breadcrumb
+      %li= link_to t('breadcrumb.home'), root_path
+      %li.active= @legislator.full_name
+  .row
+    .col-xs-12.col-sm-6.col-md-4
+      .profile-portrait= render partial: 'layouts/portrait', locals: { rep: @legislator, selected: true }
+      .profile
+        %h5= t '.profile'
+        %h4.profile-name #{@legislator.last_name}, #{@legislator.first_name} #{@legislator.middle_name}
+        %h5.profile-party= t('party')[@legislator.party.to_sym]
+        %p.profile-title
+          = t('title')[@legislator.title.to_sym]
+          %br
+          %span= t 'of'
+          = @legislator.state_name        
+    .col-xs-12.col-sm-6.col-md-8.profile-contact
+      %h5= t '.contact_info'
+      %dl
+        %dt= t '.address'
+        %dd= @legislator.office
+        %dt= t '.phone'
+        %dd= link_to @legislator.phone, "tel:#{@legislator.phone}"
+        %dt= t '.fax'
+        %dd= link_to @legislator.fax, "tel:#{@legislator.fax}"
+      %h5= t '.online_presence'
+      %dl
+        %dt= t '.website'
+        %dd= link_to @legislator.website, @legislator.website
+        %dt= t '.facebook'
+        %dd= link_to @legislator.facebook_url, @legislator.facebook_url
+        %dt= t '.twitter'
+        %dd= link_to @legislator.twitter_url, @legislator.twitter_url
+        %dt= t '.youtube'
+        %dd= link_to @legislator.youtube_url, @legislator.youtube_url
+  .row
+    = @legislator.inspect

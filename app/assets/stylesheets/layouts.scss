@@ -39,10 +39,23 @@ a {
   color:#366480;  
 }
 
+h4 {
+  color: $green;
+}
+
+h5 {
+  text-transform: uppercase;
+  color: $green;
+}
+
 hr {
   border-top: 1px solid #e4f1f1;
   border-bottom: 1px solid #a6c9c3;
   margin: 0;
+}
+
+.breadcrumb {
+  background-color: transparent;
 }
 
 .tt-dropdown-menu {
