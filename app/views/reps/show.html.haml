@@ -35,4 +35,23 @@
         %dt= t '.youtube'
         %dd= link_to @legislator.youtube_url, @legislator.youtube_url
   .row
+    .col-xs-12
+      .tabs
+        %span#rep-floor.tab.selected
+          %span= t '.from_the_floor'
+        %span.separator
+        %span#rep-bills.tab
+          %span= t '.bills'
+        %span.separator
+        %span#rep-votes-against.tab
+          %span= t '.votes_against'
+      %hr          
+      .tabs-content
+        #rep-floor-content.tab-content{ data: { href: floor_rep_path(@legislator) } }
+          .spinner
+        #rep-bills-content.tab-content{ style: 'display:none;', data: { href: bills_rep_path(@legislator) } }
+          .spinner
+        #rep-votes-against-content.tab-content{ style: 'display:none;', data: { href: votes_against_rep_path(@legislator) } }
+          .spinner
+  .row
     = @legislator.inspect

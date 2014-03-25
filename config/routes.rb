@@ -7,7 +7,13 @@ Epapertrail::Application.routes.draw do
   get 'compare', to: 'home#compare'
   post 'compare', to: 'home#compare'
   get 'legislators', to: 'home#legislators'
-  resources :reps, only: [ :show ]
+  resources :reps, only: [ :show ] do
+    member do
+      get 'floor'
+      get 'bills'
+      get 'votes-against', to: 'reps#votes_against', as: 'votes_against'
+    end
+  end
   resources :bills, only: [ :show ]
   
   # The priority is based upon order of creation:

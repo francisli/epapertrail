@@ -139,6 +139,12 @@ hr {
   padding-right: 3px;
 }
 
+.col-xs-12 {
+  .tabs {
+    text-align: left;
+  }
+}
+
 .tab-content {
   overflow: visible;
 }

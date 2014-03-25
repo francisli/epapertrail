@@ -2,6 +2,10 @@ module Sunlight
   
   class Legislator < Hashie::Mash
     
+    def to_param
+      self.bioguide_id
+    end
+    
     def full_name
       if self.middle_name.blank?
         "#{self.first_name} #{self.last_name}"
