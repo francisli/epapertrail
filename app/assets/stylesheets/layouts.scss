@@ -25,7 +25,6 @@ a.navbar-brand {
 
 body {
   background: #f0f0f0;
-  padding-top: 84px;
   color: #999;
 }
 
@@ -48,10 +47,24 @@ h5 {
   color: $green;
 }
 
+h6 {
+  color: $green;
+}
+
+.col-sm-4 {
+  h5 {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  &.scrolling {
+    overflow-y: scroll;
+  }
+}
+
 hr {
   border-top: 1px solid #e4f1f1;
   border-bottom: 1px solid #a6c9c3;
-  margin: 0;
+  margin: 0 0 10px;
 }
 
 .breadcrumb {
@@ -186,6 +199,58 @@ hr {
   line-height: 18px;
   padding: 12px;
   background-color: $gray;
+  h1, h2, h3, h4, h5, h6 {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+  p.date {
+    font-family: $font-family-serif;
+    font-size: 11px;
+    font-style: italic;
+    color: $green;
+    margin-bottom: 0;
+  }
+}
+.col-sm-4 {
+  ol {
+    list-style-type: none;
+    padding-left: 0;
+    li {
+      margin-bottom: 10px;
+      a {
+        @extend .bubble;
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+        display: block;
+        color: #999;
+        &:hover {
+          text-decoration: none;
+          @extend .bubble;
+        }
+        &.selected {
+          @extend .bubble;
+        }
+      }
+      .bubble {
+        position: relative;
+        &.selected:after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 0;
+          right: -12px;
+          width: 7px;
+          height: 100%;
+          background: transparent image-url('right-green.gif') no-repeat center right;
+        }
+      }
+    }
+  }
 }
 
 .portrait {

@@ -5,6 +5,7 @@ class RepsController < ApplicationController
   end
   
   def floor
+    @speeches = Sunlight::CapitalWords.speeches params[:id]
     render partial: 'reps/floor'
   end
   

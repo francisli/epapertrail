@@ -14,6 +14,10 @@ module Sunlight
       end        
     end
     
+    def full_name_and_title
+      "#{self.title}. #{self.full_name} (#{self.party}-#{self.state})"
+    end
+    
     def facebook_url
       "http://facebook.com/profile.php?id=#{self.facebook_id}"
     end

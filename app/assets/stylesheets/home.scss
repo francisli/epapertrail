@@ -23,7 +23,7 @@ body.home.index {
       text-align: center;
       margin: 0 8px;
     }
-    & > hr {
+    &> hr {
       margin: 0 8px;
     }
     .tab-content {
@@ -102,6 +102,7 @@ body.home.index {
     hr {
       border-top-color: #ede5e1;
       border-bottom-color: $brown;
+      margin: 0;
     }
     #compare-content {
       margin: 0 8px;

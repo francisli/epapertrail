@@ -1,5 +1,7 @@
-jQuery ->
-  
+window.enableColumnScrolling = ($content)->
+  $content.find('.scrolling').css('height', $(window).height())
+
+$ ->  
   $(document).on 'mouseenter', 'span.tab', ->
     $(this).addClass('hover')
     

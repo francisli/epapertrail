@@ -1,3 +1,5 @@
+- content_for :title, @legislator.full_name_and_title
+
 .container.container-bg
   .row
     %ol.breadcrumb
@@ -53,5 +55,3 @@
           .spinner
         #rep-votes-against-content.tab-content{ style: 'display:none;', data: { href: votes_against_rep_path(@legislator) } }
           .spinner
-  .row
-    = @legislator.inspect

@@ -1,1 +1,25 @@
-floor
+.row
+  .col-sm-4
+    %h5= t '.latest_speeches'
+    %ol
+      - first_speech = true
+      - @speeches['results'].each do |speech|
+        - if speech['speaking'].count > 2
+          %li
+            = link_to "##{speech['id']}", class: "#{'selected' if first_speech}" do
+              %p.date= l speech['date'].to_date, :format => :legislation
+              %p= speech['speaking'].first
+          - first_speech = false
+  .col-sm-4
+    - first_speech = true
+    - @speeches['results'].each do |speech|
+      - if speech['speaking'].count > 2
+        .speech{ id: speech['id'], style: "display:#{first_speech ? 'block' : 'none'}" }
+          %h5#speech-title= speech['title']
+          .bubble
+            %p.date= l speech['date'].to_date, :format => :legislation
+            - speech['speaking'].each do |line|
+              %p= line
+        - first_speech = false
+  .col-sm-4
+    %h5= t '.comment'

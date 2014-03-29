@@ -19,6 +19,15 @@ module Sunlight
       latest_speech
     end
     
+    def self.speeches(bioguide_id)
+      response = HTTParty.get "#{URL_BASE}/text.json", :query => {      
+        :bioguide_id => bioguide_id,
+        :sort => 'id desc',
+        :apikey => ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
   end
   
 end

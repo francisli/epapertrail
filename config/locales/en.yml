@@ -5,6 +5,7 @@ en:
   of: of
   senate: Senate
   house: House
+  read_more: Read more
   
   party:
     D: Democrat
@@ -21,6 +22,10 @@ en:
       low: "Voting buddies"
       even: "Common ground"
       none: "Frenemies"
+  
+  date:
+    formats:
+      legislation: "%A, %-d %B %Y"
   
   time:
     formats:
@@ -75,3 +80,12 @@ en:
       cosponsored: "Co-sponsored:"
       bills_count_html: "<span>%{count}</span> bills"
       votes_against: "Voted against their own party:"
+      
+  reps:
+    show:
+      from_the_floor: From the Floor
+      bills: "Bills & Resolutions"
+      votes_against: Votes against the party
+    floor:
+      latest_speeches: Latest Speeches
+      comment: Comment on this Speech

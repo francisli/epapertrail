@@ -11,5 +11,11 @@
     - first = true
     - @speeches.each do |speech|
       .speech.bubble{ :style => "display:#{first ? 'block' : 'none'}", :data => { :bioguide_id => speech['bioguide_id'] } }
-        = truncate speech['speaking'].join(' ').gsub(/(``)|('')/, '"'), :length => 900, :separator => ' '
+        - count = 0
+        - speech['speaking'].each do |line|
+          - break if count > 500
+          %p= truncate line, :length => 500 - count, :separator => ' '
+          - count += line.length
+        %p.text-right
+          = link_to t('read_more'), rep_path(speech['bioguide_id'], anchor: speech['id'])
       - first = false
