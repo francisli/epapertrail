@@ -66,7 +66,8 @@
     = l Time.parse(@vote['voted_at']), :format => :legislation
   .question
     = @vote['question']
-  .title
-    = @vote['bill']['official_title']
-  .link
-    = link_to t('.full_details'), bill_path(@vote['bill']['bill_id'])
+  - if @vote['bill']
+    .title
+      = @vote['bill']['official_title']
+    .link
+      = link_to t('.full_details'), bill_path(@vote['bill']['bill_id'])
