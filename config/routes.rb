@@ -14,7 +14,11 @@ Epapertrail::Application.routes.draw do
       get 'votes-against', to: 'reps#votes_against', as: 'votes_against'
     end
   end
-  resources :bills, only: [ :show ]
+  resources :bills, only: [ :show ] do
+    member do
+      get 'summary'
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

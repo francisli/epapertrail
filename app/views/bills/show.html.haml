@@ -1,0 +1,26 @@
+- content_for :title, t('.title', id: friendly_bill_id(@bill['bill_id']))
+
+.container.container-bg
+  .row
+    %ol.breadcrumb
+      %li= link_to t('breadcrumb.home'), root_path
+      %li.active= yield :title
+  .row
+    .col-md-4
+      %h5= l Time.parse(@bill['last_action_at']), :format => :legislation
+      %h4= "#{friendly_bill_id(@bill['bill_id'])}:"
+      %p.official-title= @bill['official_title']
+      %p.short-title= @bill['short_title']
+      %h5= t('.sponsor')
+      = rep_link @bill['sponsor_id'], @bill['sponsor']
+    .col-md-8
+      = render partial: 'home/votes'
+  .row
+    .col-xs-12
+      %hr
+  .row
+    .col-sm-4
+      %h5= t '.summary'
+      #bill-summary-content{ data: { href: summary_bill_path(@bill['bill_id']) } }
+        .spinner
+    %p.clearfix &nbsp;

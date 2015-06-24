@@ -89,3 +89,8 @@ en:
     floor:
       latest_speeches: Latest Speeches
       comment: Comment on this Speech
+
+  bills:
+    show:
+      title: "Bills & Resolutions: %{id}"
+      sponsor: "Sponsor:"

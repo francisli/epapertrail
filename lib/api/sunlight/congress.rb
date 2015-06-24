@@ -55,6 +55,15 @@ module Sunlight
       response.parsed_response
     end
     
+    def self.vote_by_bill(bill_id)
+      response = HTTParty.get "#{URL_BASE}/votes", :query => {
+        bill_id: bill_id,
+        fields: 'voted_at,result,breakdown,voters,bill,question',
+        apikey: ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
     def self.votes_by_legislator(bioguide_id, page = 1)
       response = HTTParty.get "#{URL_BASE}/votes", :query => {
         :"voter_ids.#{bioguide_id}__exists" => :true,
@@ -89,7 +98,25 @@ module Sunlight
         :apikey => ENV['SUNLIGHT_API_KEY']
       }
       response.parsed_response
-    end    
+    end
+    
+    def self.bill(bill_id)
+      response = HTTParty.get "#{URL_BASE}/bills", :query => {
+        bill_id: bill_id,
+        apikey: ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+
+    def self.bill_summary(bill_id)
+      response = HTTParty.get "#{URL_BASE}/bills", :query => {
+        bill_id: bill_id,
+        fields: 'summary',
+        apikey: ENV['SUNLIGHT_API_KEY']
+      }
+      response.parsed_response
+    end
+    
   end
   
 end

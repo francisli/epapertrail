@@ -1,3 +1,7 @@
+- chamber = nil
+- @vote['voters'].each do |bioguide_id, details|
+  - chamber = details['voter']['chamber']
+  - break
 .vote-summary
   .result
     = @vote['result']
@@ -36,10 +40,10 @@
             %td.votes
               %div
                 - count = 0
-                - row_size = params[:chamber] == 'senate' ? 8 : 16
+                - row_size = chamber == 'senate' ? 8 : 16
                 - @vote['voters'].each do |bioguide_id, details|
                   - if details['voter']['party'] == party and details['vote'] == vote
-                    = link_to rep_path(bioguide_id), class: "vote #{party} #{params[:chamber]}#{count < row_size ? ' first_row' : ''}#{count%row_size==(row_size-1) ? ' last_col' : ''}", data: { toggle: 'tooltip', title: "#{details['voter']['last_name']} (#{details['voter']['party']}-#{details['voter']['state']})", bioguide_id: bioguide_id } do
+                    = link_to rep_path(bioguide_id), class: "vote #{party} #{chamber}#{count < row_size ? ' first_row' : ''}#{count%row_size==(row_size-1) ? ' last_col' : ''}", data: { toggle: 'tooltip', title: "#{details['voter']['last_name']} (#{details['voter']['party']}-#{details['voter']['state']})", bioguide_id: bioguide_id } do
                       %span= details['voter']['last_name']
                       %span= vote
                     - count += 1
@@ -56,18 +60,19 @@
               %div
                 - count = 0
                 - session[:reps]['results'].each do |rep|
-                  - if rep['chamber'] == params[:chamber]
+                  - if rep['chamber'] == chamber
                     - if @vote['voters'][rep['bioguide_id']] and @vote['voters'][rep['bioguide_id']]['vote'] == vote
                       = link_to rep_path(rep['bioguide_id']), class: "vote #{rep['party']} senate#{count == 0 ? ' first_row' : ''}", data: { toggle: 'tooltip', title: "#{rep['last_name']} (#{rep['party']}-#{rep['state']})", bioguide_id: rep['bioguide_id'] } do
                         .name{ :class => "#{count == 0 ? 'first_row' : ''}"}= rep['last_name']
                       .clearfix
                       - count += 1
-  .date
-    = l Time.parse(@vote['voted_at']), :format => :legislation
-  .question
-    = @vote['question']
-  - if @vote['bill']
-    .title
-      = @vote['bill']['official_title']
-    .link
-      = link_to t('.full_details'), bill_path(@vote['bill']['bill_id'])
+  .details
+    .date
+      = l Time.parse(@vote['voted_at']), :format => :legislation
+    .question
+      = @vote['question']
+    - if @vote['bill']
+      .title
+        = @vote['bill']['official_title']
+      .link
+        = link_to t('.full_details'), bill_path(@vote['bill']['bill_id'])

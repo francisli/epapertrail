@@ -1,0 +1,20 @@
+.bills.show {
+	.official-title {
+		font-family: $font-family-serif;
+		font-size: 16px;
+		color: $green;
+	}
+	.short-title {
+		font-family: $font-family-serif;
+		font-style: italic;
+		margin-bottom: 2em;
+	}
+	.vote-summary {
+		.result .count {
+			display: inline;
+		}
+		.details {
+			display: none;
+		}
+	}
+}

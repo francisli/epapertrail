@@ -18,4 +18,13 @@ module ApplicationHelper
     end
   end
   
+  def friendly_bill_id(bill_id)
+    match = bill_id.match /([^0-9]+)([0-9]+)/
+    "#{match[1].upcase.chars.join('.')}. #{match[2]}"
+  end
+  
+  def rep_link(rep_id, rep, party = nil)
+    link_to "#{rep['first_name']} #{rep['middle_name']} #{rep['last_name']}", rep_path(rep_id), class: 'rep-link'
+  end
+  
 end
